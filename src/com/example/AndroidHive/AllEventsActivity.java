@@ -21,14 +21,13 @@ public class AllEventsActivity extends ListActivity {
     // Progress Dialog
     private ProgressDialog pDialog;
 
-    // Creating JSON Parser object
+    // Creating ServerConnector object
     ServerConnector serverConnector = new ServerConnector();
 
     ArrayList<String> eventsList;
 
-    // url to get all products list
+    // url to get all events list
     private static String urlGetEvents = "http://10.0.2.2:4567/";
-//    private static String url_all_products = "http://localhost/android_connect/get_all_products.php";
 
 
 
@@ -40,14 +39,14 @@ public class AllEventsActivity extends ListActivity {
         // Hashmap for ListView
         eventsList = new ArrayList<String>();
 
-        // Loading products in Background Thread
+        // Loading events in Background Thread
         new LoadAllEvents().execute();
 
     }
 
 
     /**
-     * Background Async Task to Load all product by making HTTP Request
+     * Background Async Task to Load all events by making HTTP Request
      * */
     class LoadAllEvents extends AsyncTask<String, String, String> {
 
@@ -97,7 +96,7 @@ public class AllEventsActivity extends ListActivity {
          * After completing background task Dismiss the progress dialog
          * **/
         protected void onPostExecute(String file_url) {
-            // dismiss the dialog after getting all products
+            // dismiss the dialog after getting all events
             pDialog.dismiss();
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
